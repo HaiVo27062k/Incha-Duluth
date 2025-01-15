@@ -1,0 +1,64 @@
+<HTML>
+    <HEAD>
+        <style>
+            body {
+                background-color: rgb(153, 187, 201);
+            }
+            
+            table, td {
+                width: 800px; 
+                height: 100px;
+                border: 2px solid black; 
+            }
+
+            tr {
+                background-color: rgb(28, 31, 36);
+                color: white;
+                width: 50px; 
+                height: 30px;
+            }
+            
+            td {
+                background-color: rgb(209, 216, 227);
+                width: 50px; 
+                height: 50px;
+                padding: 5px; 
+                text-align: center;
+                vertical-align: center;
+                color: black; 
+            }
+
+        </style>
+    </HEAD>
+    <BODY>
+        <center>
+            <H1>Display Owner View</H1> <br>
+            <table>
+                <tr>
+                    <th>username</th>
+                    <th>first_name</th>
+                    <th>last_name</th>
+                    <th>address</th>
+                    <th>num_restaurants</th>
+                    <th>num_places</th>
+                    <th>highs</th>
+                    <th>lows</th>
+                    <th>debt</th>
+                </tr>
+                {% for item in data %}
+                <tr>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                    <td>{{item[2]}}</td>
+                    <td>{{item[3]}}</td>
+                    <td>{{item[4]}}</td>
+                    <td>{{item[5]}}</td>
+                    <td>{{item[6]}}</td>
+                    <td>{{item[7]}}</td>
+                    <td>{{item[8]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </center>
+    </BODY> 
+</HTML>

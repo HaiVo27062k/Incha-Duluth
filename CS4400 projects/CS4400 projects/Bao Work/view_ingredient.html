@@ -1,0 +1,36 @@
+<HTML>
+    <HEAD>
+        <style>
+            table, td {
+                border: 1px solid black; 
+            }
+            tr, td {
+                text-align: center;
+                vertical-align: center;
+            }
+        </style>
+    </HEAD>
+    <BODY bgcolor="gray">
+        <center>
+            <H1>Display Ingredient View</H1> <br>
+            <table>
+                <tr>
+                    <th>ingredient_name</th>
+                    <th>location</th>
+                    <th>amount_available</th>
+                    <th>low_price</th>
+                    <th>high_price</th>
+                </tr>
+                {% for item in data %}
+                <tr>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                    <td>{{item[2]}}</td>
+                    <td>{{item[3]}}</td>
+                    <td>{{item[4]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </center>
+    </BODY> 
+</HTML>
