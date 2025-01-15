@@ -99,9 +99,40 @@ def Show_Figure():
 
         return render_template('Show_Figure.html', data=[data1, data2])
 
+@app.route("/Restock_Figure/success")
+def Restock_Figure_success():
+    html = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Success!</title>
+        <script>
+            setTimeout(() => {
+                window.location.href = "{{ url_for('Restock_Figure') }}";
+            }, 2000); // Redirect after 2 seconds
+        </script>
+    </head>
+    <body>
+        <h1>Successfully update figure quantity</h1>
+    </body>
+    </html>
+    """
+    return render_template_string(html)
+
 @app.route('/Restock_Figure/', methods=['POST', 'GET'])
 def Restock_Figure():
-        return render_template('Restock_Figure.html')
+    if request.method == "POST":
+        details = request.form
+        figure_id = details['sl_figure_id']
+        Quantity = details['sl_Quantity']
+
+        action = request.form.get('action')
+        cur = mysql.connection.cursor()
+        cur.callproc('restock_figure', [figure_id, Quantity, action])
+        mysql.connection.commit()
+        cur.close()
+        return redirect('/Restock_Figure/success')
+    return render_template('Restock_Figure.html')
         
  
 if __name__ == '__main__':

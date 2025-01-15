@@ -6,6 +6,7 @@ Req:
 + Quantity (Int)
 + Quantity Sold (Int)
 */
+Use Figure_Database;
 drop procedure if exists create_new_figure;
 delimiter //
 create procedure create_new_figure (in ip_figure_id varchar(3),
@@ -69,17 +70,27 @@ Req:
 drop procedure if exists restock_figure;
 delimiter //
 create procedure restock_figure (in ip_figure_id varchar(3),
-                            in ip_Quantity INT)
+                            in ip_Quantity INT,
+                            in u_action TEXT
+                            )
 sp_main: begin
     -- NEED TO CHECK FOR DECIMAL
     if (ip_figure_id NOT IN (select figure_id from figure_general)) OR
 		(ip_quantity < 0) 
 	then leave sp_main; end if;
     
-    -- ADD the number of figure
-    UPDATE figure_general
-    SET Quantity = Quantity + ip_Quantity
-    WHERE figure_id = ip_figure_id;
+    if u_action = 'add' then
+		-- ADD the number of figure
+		UPDATE figure_general
+		SET Quantity = Quantity + ip_Quantity
+		WHERE figure_id = ip_figure_id;
+    
+    ELSEIF u_action = 'update' then
+		-- UPDATE the number of figure
+		UPDATE figure_general
+		SET Quantity = ip_Quantity
+		WHERE figure_id = ip_figure_id;
+	end if;
 end //
 delimiter ;
 

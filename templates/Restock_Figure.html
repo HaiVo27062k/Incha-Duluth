@@ -1,16 +1,22 @@
-
-<HTML>
-    <BODY bgcolor= #82CAFF>
-    <a href="/" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: #007BFF; color: white; text-decoration: none; border-radius: 5px;">Back to Main Page</a>
-    <H1>Restock Figure</H1> <br>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <a href="/" class="back-button">Back to Main Page</a>
+    <center>
+        <h1>RESTOCK FIGURE</h1>
+    </center>
+    <br>
     <form method="POST">
         <center>
-        Figure_Id <input type = "text" name= "sl_figure_id" /> <br>
-        Quantity <input type = "number" name = "sl_Quantity" /> <br>
-        <br><br>
-        <button type="submit" name="button1">Add Value (a)</button>
-        <button type="submit" name="button2">Update Value (w)</button>
+            <label for="sl_figure_id">Figure Id:</label>
+            <input type="text" name="sl_figure_id" id="sl_figure_id" class="input-field" /> <br><br>
+            <label for="sl_Quantity">Quantity:</label>
+            <input type="number" name="sl_Quantity" id="sl_Quantity" class="input-field" /> <br><br>
+            <button type="submit" name="action" value="add" class="action-button">Add Quantity (a)</button>
+            <button type="submit" name="action" value="update" class="action-button">Update Quantity (w)</button>
         </center>
     </form>
-    </BODY>
-</HTML>
+</body>
+</html>

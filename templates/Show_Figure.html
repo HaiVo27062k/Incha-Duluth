@@ -1,9 +1,32 @@
-
 <HTML>
     <a href="/" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: #007BFF; color: white; text-decoration: none; border-radius: 5px;">Back to Main Page</a>
+    <HEAD>
+        <style>
+            table {
+                width: 80%;
+                border-collapse: collapse;
+                margin: 20px 0;
+                font-size: 18px;
+                text-align: center;
+                border: 1px solid black;
+            }
+            th, td {
+                padding: 12px;
+                border: 1px solid black;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            tr:hover {
+                background-color: #f5f5f5;
+            }
+        </style>
+    </HEAD>
     <BODY bgcolor= #82CAFF>
         <center>
-        <H1>Show Figure</H1> <br>
+        <H1>SHOW FIGURE</H1> <br>
+        <h2>Figure Details</h2>
         <table>
             <tr>
                 <th>figure_id</th>
@@ -14,17 +37,17 @@
             </tr>
             {% for item in data[0] %}
             <tr>
-                <!-- <td>{{item}}</td> -->
                 <td>{{item[0]}}</td>
                 <td>{{item[1]}}</td>
                 <td>{{item[2]}}</td>
                 <td>{{item[3]}}</td>
                 <td>{{item[4]}}</td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </table>
         <br>
         <br>
+        <h2>Sales Details</h2>
         <table>
             <tr>
                 <th>figure_id</th>
@@ -34,13 +57,12 @@
             </tr>
             {% for item in data[1] %}
             <tr>
-                <!-- <td>{{item}}</td> -->
                 <td>{{item[0]}}</td>
                 <td>{{item[1]}}</td>
                 <td>{{item[2]}}</td>
                 <td>{{item[3]}}</td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </table>
         </center>
     </BODY> 

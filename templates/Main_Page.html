@@ -1,13 +1,54 @@
+<html>
+<head>
+    <style>
+        body {
+            background-color: #82CAFF;
+            font-family: Arial, sans-serif;
+        }
 
-<HTML>
-    <BODY bgcolor= #82CAFF>
-        <center>
-        <H1> Duck Ink Inventory Management System</H1>
-        <br>
-        <button> <a href="/Show_Figure/">Show Figure</a></button>
-        <button> <a href="/Sell_Figure/">Sell Figure</a></button>
-        <button> <a href="/Create_New_Figure/">Create New Figure</a></button>
-        <button> <a href="/Restock_Figure/">Restock Figure</a></button>
-        </center>
-    </BODY>
-</HTML>
+        h1 {
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            width: 80%; /* Make the button take up 80% of the width of the container */
+            max-width: 400px; /* Set a maximum width for larger screens */
+            height: 60px;
+            margin: 10px 0;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .button-container button a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            line-height: 60px; /* Align text vertically within the button */
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Duck Ink Inventory Management System</h1>
+    <div class="button-container">
+        <button><a href="/Show_Figure/">Show Figure</a></button>
+        <button><a href="/Sell_Figure/">Sell Figure</a></button>
+        <button><a href="/Create_New_Figure/">Create New Figure</a></button>
+        <button><a href="/Restock_Figure/">Restock Figure</a></button>
+    </div>
+</body>
+</html>

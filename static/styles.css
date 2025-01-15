@@ -1,0 +1,82 @@
+/* Body styles */
+body {
+    background-color: #82CAFF;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Heading styles */
+h1 {
+    font-size: 48px; /* Make the heading bigger */
+    color: #333;
+}
+
+/* Form input styles */
+form {
+    margin-top: 50px;
+}
+
+form label {
+    font-size: 24px; /* Larger labels */
+    margin-right: 10px;
+}
+
+form input[type="text"],
+form input[type="number"] {
+    font-size: 24px; /* Larger input fields */
+    padding: 10px;
+    width: 300px; /* Wider input fields */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+form input[type="submit"] {
+    font-size: 24px;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Optional back button */
+.back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px 30px;
+    background: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 24px;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
+
+.action-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px 30px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}

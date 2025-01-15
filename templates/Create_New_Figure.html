@@ -1,10 +1,14 @@
 
 <HTML>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    
     <BODY bgcolor= #82CAFF>
     <a href="/" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: #007BFF; color: white; text-decoration: none; border-radius: 5px;">Back to Main Page</a>
     <form method="POST" action="">
         <center>
-        <H1>Enter Figure Information</H1> <br>
+        <H1>ENTER FIGURE INFORMATION</H1> <br>
         Figure_Id  <input type = "text" name= "ip_figure_id" /> <br>
         <br>
         Details  <input type = "text" name= "ip_Details" /> <br>
