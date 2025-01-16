@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, render_template_string
+from flask import Flask, render_template, request, redirect, render_template_string, jsonify, url_for
 from flask_mysqldb import MySQL
 app = Flask(__name__)
  
@@ -71,6 +71,27 @@ def Sell_Figure_success():
     """
     return render_template_string(html)
 
+@app.route("/Sell_Figure/failure/<error_msg>")
+def Sell_Figure_failure(error_msg):
+    html = render_template_string("""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Failure!</title>
+        <script>
+            setTimeout(() => {
+                window.location.href = "{{ url_for('Sell_Figure') }}";
+            }, 2000); // Redirect after 2 seconds
+        </script>
+    </head>
+    <body>
+        <h1>Failed to sell figures. Error: "{{error}}"</h1>
+    </body>
+    </html>
+    """, error=error_msg)
+    
+    return render_template_string(html)
+
 @app.route('/Sell_Figure/', methods=['GET', 'POST'])
 def Sell_Figure():
     if request.method == "POST":
@@ -78,13 +99,19 @@ def Sell_Figure():
         figure_id = details['sl_figure_id']
         Quantity = details['sl_Quantity']
         cur = mysql.connection.cursor()
-        cur.callproc('sell_figure', [figure_id, Quantity])
+        try:
+            cur.callproc('sell_figure', [figure_id, Quantity])
+        except Exception as e:
+            print(str(e))
+            # Capture the MySQL error
+            return redirect(url_for('Sell_Figure_failure', error_msg = str(e)))
+            
         mysql.connection.commit()
         cur.close()
         return redirect('/Sell_Figure/success')
     return render_template('Sell_Figure.html')
 
-@app.route('/Show_Figure/', methods=['GET'])
+@app.route('/Show_Figure/', methods=['GET']) 
 def Show_Figure():
     if request.method == "GET":
         cur = mysql.connection.cursor()

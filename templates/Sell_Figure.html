@@ -1,23 +1,34 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #82CAFF;
+        }
+        form {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <!-- <a href="/" class="back-button">Back to Main Page</a> -->
     <form method="POST" action="">
-        <center>
-            <h1>SELL FIGURE</h1>
-            <br>
-            <label for="sl_figure_id">Figure_Id</label>
-            <input type="text" name="sl_figure_id" id="sl_figure_id">
-            <br>
-            <br>
-            <label for="sl_Quantity">Quantity</label>
-            <input type="number" name="sl_Quantity" id="sl_Quantity">
-            <br>
-            <br>
-            <input type="submit" value="Submit">
-        </center>
+        <h1>SELL FIGURE</h1>
+        <br>
+        <label for="sl_figure_id">Figure_Id</label>
+        <input type="text" name="sl_figure_id" id="sl_figure_id">
+        <br>
+        <br>
+        <label for="sl_Quantity">Quantity</label>
+        <input type="number" name="sl_Quantity" id="sl_Quantity">
+        <br>
+        <br>
+        <input type="submit" value="Submit">
     </form>
 </body>
 </html>

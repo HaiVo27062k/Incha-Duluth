@@ -36,15 +36,32 @@ create procedure sell_figure (in ip_figure_id varchar(3),
 sp_main: begin
     DECLARE currTime DATETIME; -- Declare a variable to store the current datetime
 	DECLARE ip_price INT; -- Declare a variable to store the current datetime
+    DECLARE ex_quantity INT;
     
     SET currTime = NOW();      -- Assign the current datetime to the variable
 	SELECT Price INTO ip_price FROM figure_general WHERE figure_id = ip_figure_id;
     
     -- ENSURE THAT WE HAVE THAT FIGURE TO SELL
     -- NEED TO CHECK FOR DECIMAL
-    if (ip_figure_id NOT IN (select figure_id from figure_general)) OR
-		(ip_quantity < 0) 
-	then leave sp_main; end if;
+    if (ip_figure_id NOT IN (select figure_id from figure_general)) 
+	then 
+			SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Figure ID does not exist';
+			leave sp_main; 
+	end if;
+    
+    if (ip_quantity < 0) then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Input value cannot be negative.';
+		leave sp_main; 
+    end if;
+    
+	SELECT Quantity INTO ex_quantity FROM figure_general WHERE figure_id = ip_figure_id;
+    if (ip_quantity > ex_quantity) then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Quantity sold is larger than current inventory';
+		leave sp_main; 
+    end if;
     
     -- SUBTRACT the number of figure
     UPDATE figure_general
